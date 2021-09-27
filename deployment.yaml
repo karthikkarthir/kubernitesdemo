@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    tier: frontend
+spec:
+  replicas: 6
+  template:
+    metadata:
+      name: my-pods
+      labels:
+       tier: back-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  selector:
+    matchLabels:
+        tier: back-end       
